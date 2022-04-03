@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="app_bar_height">36dp</dimen>
+    <dimen name="app_padding">16dp</dimen>
+    <dimen name="app_card_padding">1dp</dimen>
+    <dimen name="app_corner_radius">8dp</dimen>
+    <dimen name="app_card_elevation">1dp</dimen>
+    <dimen name="app_horizontal_card_padding">4dp</dimen>
+    <dimen name="app_vertical_card_padding">2dp</dimen>
+    <dimen name="app_element_height">40dp</dimen>
+    <dimen name="app_default">0dp</dimen>
+    <dimen name="app_shadow">8dp</dimen>
+    <dimen name="app_spacer_height">8dp</dimen>
+    <dimen name="app_big_spacer_height">16dp</dimen>
+    <dimen name="app_little_spacer_height">4dp</dimen>
+    <dimen name="app_icon_height">24dp</dimen>
+
+</resources>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">TasksApp</string>
+    <string name="new_task">New task</string>
+    <string name="back">back</string>
+    <string name="title">Title*</string>
+    <string name="description">Description</string>
+    <string name="daily_task">Daily task</string>
+    <string name="save_label">SAVE</string>
+    <string name="delete">Delete</string>
+    <string name="no_tasks">No tasks</string>
+    <string name="choose_color">Task color:</string>
+</resources>
