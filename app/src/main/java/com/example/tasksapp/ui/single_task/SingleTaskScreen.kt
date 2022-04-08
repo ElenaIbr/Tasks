@@ -78,7 +78,7 @@ fun AddEditTodoScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .background(
-                        Color.White
+                        WhiteSmoke
                     )
                     .padding(
                         top = dimensionResource(id = R.dimen.app_padding)
@@ -302,7 +302,7 @@ fun AddEditTodoScreen(
                     ) {
                         Text(
                             text = stringResource(id = R.string.save_label),
-                            color = Color.White,
+                            color = WhiteSmoke,
                             fontSize = Typography.body1.fontSize
                         )
                     }

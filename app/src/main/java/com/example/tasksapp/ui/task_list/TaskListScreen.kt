@@ -78,7 +78,7 @@ fun TaskListScreen(
                 )
             }
         },
-        backgroundColor = Color.White
+        backgroundColor = WhiteSmoke
     ) {
         LazyColumn(
             modifier = Modifier
@@ -87,7 +87,7 @@ fun TaskListScreen(
             item {
                 TabRow(
                     selectedTabIndex = tabIndex,
-                    backgroundColor = Color.White,
+                    backgroundColor = WhiteSmoke,
                     contentColor = Color.Black
                 ) {
                     tabData.forEachIndexed { index, text ->
