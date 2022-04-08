@@ -120,7 +120,10 @@ fun TaskListScreen(
                             viewModel.onEvent(TaskListEvent.OnTaskClick(Task))
                         }
                         .padding(
-                            dimensionResource(id = R.dimen.app_padding)
+                            start = dimensionResource(id = R.dimen.app_padding),
+                            end = dimensionResource(id = R.dimen.app_padding),
+                            top = dimensionResource(id = R.dimen.app_little_padding),
+                            bottom = dimensionResource(id = R.dimen.app_little_padding)
                         )
                 )
             }
@@ -134,7 +137,7 @@ fun TaskListScreen(
                     ) {
                         Text(
                             text = stringResource(id = R.string.no_tasks),
-                            color = Color.Black
+                            color = Color.LightGray
                         )
                     }
                 }
