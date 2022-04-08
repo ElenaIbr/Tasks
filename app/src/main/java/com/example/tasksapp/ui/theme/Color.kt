@@ -4,8 +4,8 @@ import androidx.compose.ui.graphics.Color
 
 val Purple700 = Color(0xFF3700B3)
 val Teal200 = Color(0xFF03DAC5)
-val DoneTaskTextColor = Color(0xFF404140)
-val DoneTaskBackground = Color(0xF2D6DADA)
+val DoneTaskTextColor = Color(0xFFC3C2C0)
+val DoneTaskBackground = Color(0xF2DAD8D6)
 val AccentColor = Color(0xFFf5911c)
 val PinkBackgroundColor = Color(0xFFf8eaec)
 val GreenBackgroundColor = Color(0xFFddfdec)
