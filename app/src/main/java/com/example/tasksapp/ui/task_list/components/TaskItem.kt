@@ -48,7 +48,7 @@ fun TaskItem(
                 Text(
                     text = task.title,
                     fontSize = 20.sp,
-                    color = if (task.isDone) DoneTaskTextColor else Color.Black,
+                    color = if (task.isDone) DoneTaskTextColor else Color(task.textColor),
                     textDecoration = if (task.isDone) TextDecoration.LineThrough else TextDecoration.None
                 )
             }

@@ -16,7 +16,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -93,7 +92,7 @@ fun AddEditTodoScreen(
                                 if (viewModel.task?.isDone == true) {
                                     DoneTaskBackground
                                 } else {
-                                    Color(viewModel.color)
+                                    viewModel.color
                                 }
                             )
                             .fillParentMaxHeight(0.13F)
@@ -123,7 +122,7 @@ fun AddEditTodoScreen(
                                 if (viewModel.task?.isDone == true) {
                                     DoneTaskBackground
                                 } else {
-                                    Color(viewModel.color)
+                                    viewModel.color
                                 },
                                 focusedIndicatorColor = Color.Transparent,
                                 unfocusedIndicatorColor = Color.Transparent,
@@ -144,7 +143,7 @@ fun AddEditTodoScreen(
                                 if (viewModel.task?.isDone == true) {
                                     DoneTaskBackground
                                 } else {
-                                    Color(viewModel.color)
+                                    viewModel.color
                                 }
                             )
                     ) {
@@ -176,7 +175,7 @@ fun AddEditTodoScreen(
                                 if (viewModel.task?.isDone == true) {
                                     DoneTaskBackground
                                 } else {
-                                    Color(viewModel.color)
+                                    viewModel.color
                                 },
                                 focusedIndicatorColor = Color.Transparent,
                                 unfocusedIndicatorColor = Color.Transparent,
@@ -225,11 +224,11 @@ fun AddEditTodoScreen(
                                                 dimensionResource(id = R.dimen.app_shadow),
                                                 RoundedCornerShape(30)
                                             )
-                                            .background(color)
+                                            .background(color.key)
                                             .clickable {
                                                 viewModel.onEvent(
                                                     SingleTaskEvent.OnColorChange(
-                                                        color.toArgb()
+                                                        color
                                                     )
                                                 )
                                             }

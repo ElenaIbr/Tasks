@@ -12,5 +12,11 @@ val GreenBackgroundColor = Color(0xFFddfdec)
 val SkyBlueBackgroundColor = Color(0xFFe0f8f7)
 val BlueBackgroundColor = Color(0xFFe2edff)
 val VioletBackgroundColor = Color(0xFFeeeefd)
-val DeleteCartColor = Color(0xFFBBBBBB)
+
+val PinkTextColor = Color(0xFF70353c)
+val GreenTextColor = Color(0xFF285351)
+val SkyBlueTextColor = Color(0xFF304c6a)
+val BlueTextColor = Color(0xFF224a76)
+val VioletTextColor = Color(0xFF3a3a7b)
+
 val WhiteSmoke = Color(0xFFF1EFEE)

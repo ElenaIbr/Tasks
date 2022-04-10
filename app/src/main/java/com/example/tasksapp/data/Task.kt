@@ -13,15 +13,30 @@ data class Task(
     val taskForToday: Boolean,
     val time: Long,
     val color: Int = PinkBackgroundColor.toArgb(),
+    val textColor: Int = PinkTextColor.toArgb(),
     @PrimaryKey val id: Int? = null
 ) {
     companion object {
-        val taskColors = listOf(
+        val taskColors = hashMapOf(
+            PinkBackgroundColor to PinkTextColor,
+            BlueBackgroundColor to BlueTextColor,
+            GreenBackgroundColor to GreenTextColor,
+            VioletBackgroundColor to VioletTextColor,
+            SkyBlueBackgroundColor to SkyBlueTextColor,
+        )
+        /*val taskColors = listOf(
             PinkBackgroundColor,
             BlueBackgroundColor,
             GreenBackgroundColor,
             VioletBackgroundColor,
             SkyBlueBackgroundColor
         )
+        val textTaskColors = listOf(
+            PinkTextColor,
+            BlueTextColor,
+            GreenTextColor,
+            VioletTextColor,
+            SkyBlueTextColor
+        )*/
     }
 }

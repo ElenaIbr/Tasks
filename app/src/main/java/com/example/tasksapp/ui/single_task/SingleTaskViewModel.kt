@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -12,6 +13,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.tasksapp.data.Task
 import com.example.tasksapp.data.TaskRepository
 import com.example.tasksapp.ui.theme.PinkBackgroundColor
+import com.example.tasksapp.ui.theme.PinkTextColor
 import com.example.tasksapp.utilits.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -38,10 +40,10 @@ class SingleTaskViewModel @Inject constructor(
     var taskForToday by mutableStateOf(false)
         private set
 
-    var color by mutableStateOf(PinkBackgroundColor.toArgb())
+    var color by mutableStateOf(PinkBackgroundColor)
         private set
 
-    var buttonIsEnabled by mutableStateOf(false)
+    var textColor by mutableStateOf(PinkTextColor)
         private set
 
     private val _uiEvent =  Channel<UiEvent>()
@@ -55,7 +57,8 @@ class SingleTaskViewModel @Inject constructor(
                     title = task.title
                     description = task.description ?: ""
                     taskForToday = task.taskForToday
-                    color = task.color
+                    color = Color(task.color)
+                    textColor = Color(task.textColor)
                     this@SingleTaskViewModel.task = task
                 }
             }
@@ -80,7 +83,8 @@ class SingleTaskViewModel @Inject constructor(
                             isDone = task?.isDone ?: false,
                             taskForToday = taskForToday,
                             time = Calendar.getInstance().timeInMillis,
-                            color = color,
+                            color = color.toArgb(),
+                            textColor = textColor.toArgb(),
                             id = task?.id
                         )
                     )
@@ -91,7 +95,8 @@ class SingleTaskViewModel @Inject constructor(
                 taskForToday = event.taskForToday
             }
             is SingleTaskEvent.OnColorChange -> {
-                color = event.color
+                color = event.color.key
+                textColor = event.color.value
             }
         }
     }
