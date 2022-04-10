@@ -8,5 +8,5 @@ sealed class TaskListEvent {
     object OnUndoDeleteClick: TaskListEvent()
     data class OnTaskClick(val task: Task): TaskListEvent()
     object OnAddTaskClick: TaskListEvent()
-    data class OnDailyTaskUpdate(val task: Task, val currentDate: Long): TaskListEvent()
+    data class OnDailyTaskUpdate(val task: Task): TaskListEvent()
 }

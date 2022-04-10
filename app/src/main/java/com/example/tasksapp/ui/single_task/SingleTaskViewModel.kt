@@ -1,5 +1,7 @@
 package com.example.tasksapp.ui.single_task
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -15,6 +17,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -59,6 +62,7 @@ class SingleTaskViewModel @Inject constructor(
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun onEvent(event: SingleTaskEvent) {
         when(event) {
             is SingleTaskEvent.OnTitleChange -> {
@@ -75,7 +79,7 @@ class SingleTaskViewModel @Inject constructor(
                             description = description,
                             isDone = task?.isDone ?: false,
                             taskForToday = taskForToday,
-                            time = System.currentTimeMillis()/1000,
+                            time = Calendar.getInstance().timeInMillis,
                             color = color,
                             id = task?.id
                         )

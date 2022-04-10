@@ -1,5 +1,7 @@
 package com.example.tasksapp.ui.task_list
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tasksapp.data.Task
@@ -8,8 +10,10 @@ import com.example.tasksapp.utilits.Routes
 import com.example.tasksapp.utilits.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import java.util.*
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @HiltViewModel
@@ -25,6 +29,7 @@ class TaskListViewModel @Inject constructor(
 
     private var deletedTask: Task? = null
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun onEvent(event: TaskListEvent) {
         when(event) {
             is TaskListEvent.OnTaskClick -> {
@@ -61,12 +66,15 @@ class TaskListViewModel @Inject constructor(
             }
             is TaskListEvent.OnDailyTaskUpdate -> {
                 viewModelScope.launch {
-                    repository.insertTask(
-                        event.task.copy(
-                            time = System.currentTimeMillis()/1000,
-                            isDone = false
+                    val delta = Calendar.getInstance().timeInMillis - event.task.time
+                    if (TimeUnit.MILLISECONDS.toDays(delta) > 0) {
+                        repository.insertTask(
+                            event.task.copy(
+                                time = Calendar.getInstance().timeInMillis,
+                                isDone = false
+                            )
                         )
-                    )
+                    }
                 }
             }
         }

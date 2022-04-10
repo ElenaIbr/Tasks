@@ -9,4 +9,6 @@
     <string name="delete">Delete</string>
     <string name="no_tasks">No tasks</string>
     <string name="choose_color">Task color:</string>
+    <string name="all_tasks">ALL TASKS</string>
+    <string name="daily_tasks">DAILY TASKS</string>
 </resources>

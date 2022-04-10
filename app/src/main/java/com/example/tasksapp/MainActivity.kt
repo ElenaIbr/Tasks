@@ -11,8 +11,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.tasksapp.ui.single_task.AddEditTodoScreen
-import com.example.tasksapp.ui.theme.MVVMTodoAppTheme
 import com.example.tasksapp.ui.task_list.TaskListScreen
+import com.example.tasksapp.ui.theme.MVVMTodoAppTheme
 import com.example.tasksapp.utilits.Routes
 import dagger.hilt.android.AndroidEntryPoint
 

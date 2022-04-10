@@ -11,13 +11,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.sp
+import com.example.tasksapp.R
 import com.example.tasksapp.data.Task
 import com.example.tasksapp.ui.theme.DoneTaskBackground
 import com.example.tasksapp.ui.theme.DoneTaskTextColor
-import com.example.tasksapp.R
 
 @Composable
 fun TaskItem(
@@ -30,7 +29,7 @@ fun TaskItem(
             .padding(
                 start = dimensionResource(id = R.dimen.app_horizontal_card_padding),
                 end = dimensionResource(id = R.dimen.app_horizontal_card_padding),
-                top = dimensionResource(id = R.dimen.app_vertical_card_padding)
+                bottom = dimensionResource(id = R.dimen.app_vertical_card_padding)
             ),
         shape = RoundedCornerShape(
             dimensionResource(id = R.dimen.app_corner_radius)
@@ -49,10 +48,8 @@ fun TaskItem(
                 Text(
                     text = task.title,
                     fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
                     color = if (task.isDone) DoneTaskTextColor else Color.Black,
                     textDecoration = if (task.isDone) TextDecoration.LineThrough else TextDecoration.None
-
                 )
             }
             Spacer(

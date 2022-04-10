@@ -1,11 +1,12 @@
 package com.example.tasksapp.ui.single_task
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -13,7 +14,6 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
@@ -22,12 +22,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.tasksapp.R
 import com.example.tasksapp.data.Task
-import com.example.tasksapp.ui.theme.*
+import com.example.tasksapp.ui.components.PrimaryButton
+import com.example.tasksapp.ui.theme.AccentColor
+import com.example.tasksapp.ui.theme.DoneTaskBackground
+import com.example.tasksapp.ui.theme.WhiteSmoke
 import com.example.tasksapp.utilits.UiEvent
 import kotlinx.coroutines.flow.collect
-import com.example.tasksapp.R
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun AddEditTodoScreen(
     OnBackStack: () -> Unit,
@@ -54,8 +58,8 @@ fun AddEditTodoScreen(
             TopAppBar(
                 modifier = Modifier
                     .height(
-                    dimensionResource(id = R.dimen.app_bar_height)
-                ),
+                        dimensionResource(id = R.dimen.app_bar_height)
+                    ),
                 title = {
                     Text(
                         text = viewModel.title.ifEmpty {
@@ -70,7 +74,8 @@ fun AddEditTodoScreen(
                             contentDescription = stringResource(id = R.string.back)
                         )
                     }
-                }
+                },
+                backgroundColor = WhiteSmoke
             )
         },
         content = {
@@ -80,64 +85,7 @@ fun AddEditTodoScreen(
                     .background(
                         WhiteSmoke
                     )
-                    .padding(
-                        top = dimensionResource(id = R.dimen.app_padding)
-                    )
             ) {
-                item {
-                    Column {
-                        Box(
-                            modifier = Modifier
-                                .padding(
-                                    start = dimensionResource(id = R.dimen.app_padding),
-                                    bottom = dimensionResource(id = R.dimen.app_padding)
-                                )
-                        ) {
-                            Text(
-                                text = stringResource(id = R.string.choose_color),
-                                fontSize = 16.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = Color.DarkGray
-                            )
-                        }
-                        LazyRow(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(
-                                    bottom = dimensionResource(id = R.dimen.app_padding),
-                                ),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            contentPadding = PaddingValues(
-                                start = dimensionResource(id = R.dimen.app_padding),
-                                end = dimensionResource(id = R.dimen.app_padding)
-                            )
-                        ) {
-                            Task.taskColors.forEach { color ->
-                                item {
-                                    Box(
-                                        modifier = Modifier
-                                            .size(
-                                                dimensionResource(id = R.dimen.app_element_height)
-                                            )
-                                            .shadow(
-                                                dimensionResource(id = R.dimen.app_shadow),
-                                                CircleShape
-                                            )
-                                            .clip(CircleShape)
-                                            .background(color)
-                                            .clickable {
-                                                viewModel.onEvent(
-                                                    SingleTaskEvent.OnColorChange(
-                                                        color.toArgb()
-                                                    )
-                                                )
-                                            }
-                                    )
-                                }
-                            }
-                        }
-                    }
-                }
                 item {
                     Box(
                         modifier = Modifier
@@ -158,7 +106,8 @@ fun AddEditTodoScreen(
                             placeholder = {
                                 Text(
                                     text = stringResource(id = R.string.title),
-                                    color = Color.Gray
+                                    color = Color.Gray,
+                                    fontSize = 20.sp
                                 )
                             },
                             modifier = Modifier
@@ -207,7 +156,8 @@ fun AddEditTodoScreen(
                             placeholder = {
                                 Text(
                                     text = stringResource(id = R.string.description),
-                                    color = Color.Gray
+                                    color = Color.Gray,
+                                    fontSize = 20.sp
                                 )
                             },
                             modifier = Modifier
@@ -233,6 +183,60 @@ fun AddEditTodoScreen(
                                 disabledIndicatorColor = Color.Transparent
                             )
                         )
+                    }
+                }
+                item {
+                    Column {
+                        Box(
+                            modifier = Modifier
+                                .padding(
+                                    top = dimensionResource(id = R.dimen.app_padding),
+                                    start = dimensionResource(id = R.dimen.app_padding),
+                                    bottom = dimensionResource(id = R.dimen.app_padding)
+                                )
+                        ) {
+                            Text(
+                                text = stringResource(id = R.string.choose_color),
+                                fontSize = 18.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = Color.DarkGray
+                            )
+                        }
+                        LazyRow(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(
+                                    bottom = dimensionResource(id = R.dimen.app_padding),
+                                ),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            contentPadding = PaddingValues(
+                                start = dimensionResource(id = R.dimen.app_padding),
+                                end = dimensionResource(id = R.dimen.app_padding)
+                            )
+                        ) {
+                            Task.taskColors.forEach { color ->
+                                item {
+                                    Box(
+                                        modifier = Modifier
+                                            .size(
+                                                dimensionResource(id = R.dimen.app_element_height)
+                                            )
+                                            .shadow(
+                                                dimensionResource(id = R.dimen.app_shadow),
+                                                RoundedCornerShape(30)
+                                            )
+                                            .background(color)
+                                            .clickable {
+                                                viewModel.onEvent(
+                                                    SingleTaskEvent.OnColorChange(
+                                                        color.toArgb()
+                                                    )
+                                                )
+                                            }
+                                    )
+                                }
+                            }
+                        }
                     }
                 }
                 item {
@@ -262,50 +266,20 @@ fun AddEditTodoScreen(
                         )
                         Text(
                             text = stringResource(id = R.string.daily_task),
-                            fontSize = 16.sp,
+                            fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color.DarkGray
                         )
                     }
                 }
                 item {
-                    Button(
-                        modifier = Modifier
-                            .padding(
-                                dimensionResource(id = R.dimen.app_padding)
-                            )
-                            .fillMaxWidth()
-                            .fillParentMaxHeight(0.1F)
-                            .height(
-                                dimensionResource(id = R.dimen.app_element_height)
-                            )
-                            .clip(
-                                RoundedCornerShape(
-                                    dimensionResource(id = R.dimen.app_padding)
-                                )
-                            ),
-                        elevation = ButtonDefaults.elevation(
-                            defaultElevation = dimensionResource(id = R.dimen.app_default),
-                            pressedElevation = dimensionResource(id = R.dimen.app_default),
-                            disabledElevation = dimensionResource(id = R.dimen.app_default)
-                        ),
-                        colors = ButtonDefaults.buttonColors(
-                            backgroundColor = AccentColor,
-                            disabledBackgroundColor = Color.LightGray,
-                            contentColor = Color.Black,
-                            disabledContentColor = Color.Black
-                        ),
-                        enabled = viewModel.title.isNotEmpty(),
+                    PrimaryButton(
+                        title = stringResource(id = R.string.save_label),
                         onClick = {
                             viewModel.onEvent(SingleTaskEvent.OnSaveTaskClick)
                         },
-                    ) {
-                        Text(
-                            text = stringResource(id = R.string.save_label),
-                            color = WhiteSmoke,
-                            fontSize = Typography.body1.fontSize
-                        )
-                    }
+                        enabled = viewModel.title.isNotEmpty()
+                    )
                 }
             }
         }
