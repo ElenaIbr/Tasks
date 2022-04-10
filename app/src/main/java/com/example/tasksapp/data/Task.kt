@@ -11,7 +11,7 @@ data class Task(
     val description: String?,
     val isDone: Boolean,
     val taskForToday: Boolean,
-    val updatedDate: Long,
+    val time: Long,
     val color: Int = PinkBackgroundColor.toArgb(),
     @PrimaryKey val id: Int? = null
 ) {

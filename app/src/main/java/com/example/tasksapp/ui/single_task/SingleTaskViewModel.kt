@@ -75,7 +75,7 @@ class SingleTaskViewModel @Inject constructor(
                             description = description,
                             isDone = task?.isDone ?: false,
                             taskForToday = taskForToday,
-                            updatedDate = System.currentTimeMillis()/1000,
+                            time = System.currentTimeMillis()/1000,
                             color = color,
                             id = task?.id
                         )

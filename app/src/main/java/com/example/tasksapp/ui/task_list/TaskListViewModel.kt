@@ -63,7 +63,7 @@ class TaskListViewModel @Inject constructor(
                 viewModelScope.launch {
                     repository.insertTask(
                         event.task.copy(
-                            updatedDate = System.currentTimeMillis()/1000,
+                            time = System.currentTimeMillis()/1000,
                             isDone = false
                         )
                     )
