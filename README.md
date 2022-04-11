@@ -1,6 +1,6 @@
 # Tasks
 
-[Download APK](https://github.com/ElenaIbr/Tasks/raw/master/app-debug.apk)
+[Download APK](https://github.com/ElenaIbr/Tasks/blob/master/app-debug%20(2).apk)
 
 This application allows user to create the task list.
 After that user has opportunity to mark, add and delete tasks.
